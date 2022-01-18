@@ -1,4 +1,4 @@
-import crypto, { Hash } from 'crypto';
+//import crypto, { Hash } from 'crypto';
 function encryptCodes(content:string ,passcode: string) {
     var result = []; 
     var passLen = passcode.length ;
@@ -25,7 +25,7 @@ function decryptCodes (content:string ,passcode: string) {
     for(var i = 0 ; i < result.length ; i++) {
         var ch = String.fromCharCode(result[i]); str += ch ;
     }
-    return str ;
+    return str;
 }
 function Encrypt(message: string, key: string)
 {

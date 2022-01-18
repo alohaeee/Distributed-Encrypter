@@ -12,18 +12,14 @@
     "@types/multer": "1.4.7",
     "@types/node": "14.0.13",
     "@types/node-fetch": "2.5",
-    "@types/kafkajs": "^1.9.0",
-    "@types/cryptojs": "^3.1.30",
     "ts-node": "8.10.2",
     "typescript": "3.9.5",
     "nodemon": ""
   },
   "dependencies": {
-    "cryptojs": "^2.5.3",
     "express": "4.16.1",
     "form-data": "4.0.0",
     "json-rpc-2.0": "^1.0.0",
-    "kafkajs": "^1.15.0",
     "multer": "1.4.3",
     "node-fetch": "^2.6.6"
   }

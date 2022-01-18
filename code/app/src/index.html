@@ -62,7 +62,7 @@
         let data = new FormData();
         let file = files.files[0]
 
-        let key = document.getElementById("encryptKeyRPC");
+        let key = document.getElementById("encryptKey");
         data.append("uploadFile", file);
         data.append("key", key.value);
         fetch('/encrypt', { body: data, method: 'POST' })
@@ -76,7 +76,7 @@
         let data = new FormData();
         let file = files.files[0]
 
-        let key = document.getElementById("decryptKeyRPC");
+        let key = document.getElementById("decryptKey");
         data.append("uploadFile", file);
         data.append("key", key.value);
         fetch('/decrypt', { body: data, method: 'POST' })
@@ -110,9 +110,9 @@
     }
 
     async function encryptFileRpc() {
-        const files = document.getElementById("decryptFileNameRPC");
+        const files = document.getElementById("encryptFileNameRPC");
         const file = files.files[0];
-        let key = document.getElementById("decryptKeyRPC");
+        let key = document.getElementById("encryptKeyRPC");
 
         if (file != null) {
             textBinary = await file.text();
