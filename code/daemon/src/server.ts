@@ -4,7 +4,6 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 import fetch from 'node-fetch';
 
-
 // Список узлов
 let peers: Array<string> = []
 console.log("Reading peers from peers.yaml file");
@@ -25,6 +24,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json())
 
 
+function GetFullfiledPromises<T>(settled: PromiseSettledResult<T>[]) {
+  let rs: T[] = settled.filter((v) => v.status === "fulfilled").map((v): T => {
+    let s = v as PromiseFulfilledResult<T>;
+    return s.value;
+  });
+  return rs;
+}
+
 /**
  * Посылает всем узлам проверяющее сообщение.
  * @return После ответа возвращает список активных узлов.
@@ -40,8 +47,9 @@ app.get('/', async (req, res) => {
         indexies.push(Number(peer));
       }
     }
-
-    let results = await Promise.all(promises);
+    let prs: PromiseSettledResult<Response>[] = await Promise.allSettled(promises);
+    
+    let results = await GetFullfiledPromises(prs);
     console.log(results);
 
     let response : string[] = [];
